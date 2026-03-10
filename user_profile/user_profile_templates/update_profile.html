@@ -1,0 +1,147 @@
+{% extends "base_profile.html" %}
+{% load static %}
+
+{% block title %}Update Profile{% endblock title %}
+
+{% block profile %}
+<link rel="stylesheet" href="{% static 'css/update_profile.css' %}">
+
+<div class="container mt-3 pt-4"> 
+    <h1 class="h3 mb-4 text-dark">Update Profile</h1>
+    
+    <div class="row">
+        <div class="col-md-5 col-xl-4">
+            <div class="card">
+                <div class="card-header bg-white border-bottom">
+                    <h5 class="card-title mb-0">Profile Settings</h5>
+                </div>
+                <div class="list-group list-group-flush" role="tablist">
+                    <a class="list-group-item list-group-item-action active" 
+                       id="list-account-list" data-bs-toggle="list" href="#account" role="tab">
+                        Account
+                    </a>
+                    <a class="list-group-item list-group-item-action" 
+                       id="list-password-list" data-bs-toggle="list" href="#password" role="tab">
+                        Password
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7 col-xl-8">
+            <div class="tab-content">
+                
+                <div class="tab-pane fade show active" id="account" role="tabpanel">
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Public info</h5>
+                        </div>
+                        <div class="card-body">
+                            <form action="/profile/update-profile" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group mb-3">
+                                            <label>Username</label>
+                                            <input type="text" value="{{user.username}}" placeholder="Your username" disabled class="form-control bg-light">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Biography</label>
+                                            <textarea rows="3" name="bio" placeholder="Tell something about yourself" class="form-control">{{user_info.bio}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        {% if user_info.profile_pic %}
+                                            <img src="/media/{{user_info.profile_pic}}" class="rounded-circle border mt-2" width="120" height="120">
+                                        {% else %}
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle border mt-2" width="120" height="120">
+                                        {% endif %}
+                                        <div class="mt-2">
+                                            <input type="file" name="profilepic" class="form-control-file small">
+                                        </div>
+                                        <small>For best results, use an image at least 128px by 128px in .jpg format</small>
+
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-1">Save changes</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Private info</h5>
+                        </div>
+                        <div class="card-body">
+                            <form action="/profile/update-profile" method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label>First name</label>
+                                        <input type="text" name="f_name" placeholder="Your first name" class="form-control" value="{{user.first_name}}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Last name</label>
+                                        <input type="text" name="l_name" placeholder="Your last name" class="form-control" value="{{user.last_name}}">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label>Email</label>
+                                    <input type="email" name="email" placeholder="Your email" class="form-control" value="{{user.email}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail4">Phone Number</label>
+                                    <input type="text" name = "p_num" class="form-control" value = "{{user_info.phone_number}}" id="inputEmail4" placeholder="Email">
+                                </div>
+                                <div class="mb-3">
+                                    <label>Address</label>
+                                    <input type="text" name="address" placeholder="Your Address" class="form-control" value="{{user_info.address}}">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="password" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header bg-white border-bottom">
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                                    <strong>Hey User!</strong> {{message}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                            <h5 class="card-title mb-0">Change Password</h5>
+                        </div>
+                        <div class="card-body">
+                            <form action="/profile/change-password" method="post">
+                                {% csrf_token %}
+                                <div class="form-group mb-3">
+                                    <label>Current password</label>
+                                    <input type="password" name="o_pass" class="form-control" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>New password</label>
+                                    <input type="password" name="n_pass" class="form-control" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>Verify new password</label>
+                                    <input type="password" name="c_pass" class="form-control" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-2">Update Password</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div> 
+        </div> 
+    </div> 
+</div> 
+{% endblock profile %}

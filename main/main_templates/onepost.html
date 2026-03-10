@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}Services{% endblock title %}
+
+{% block body %}
+
+<link rel="stylesheet" href="/static/css/homepage.css">
+
+
+<div>
+    <!--Section: Newsfeed-->
+<section class="container">
+  <div class="card" style="border: none;">
+    <div class="card-body">
+      <!-- Data -->
+      <div class="d-flex mb-3">
+        <a href="">
+        {% if post.user.userprofile.profile_pic %}
+          <img src="/media/{{post.user.userprofile.profile_pic}}" class="border rounded-circle me-2"
+            alt="Avatar" style="width: 40px; height: 40px;" />
+        {% else %}
+        <img src="/static/images/logo/wingtilldie-avatar-1577909_1920.png" class="border rounded-circle me-2"
+            alt="Avatar" style="width: 40px; height: 40px;" />
+        {% endif %}
+        </a>
+        <div>
+          <a href="" class="text-dark mb-0">
+            <strong>{{post.user}}</strong>
+          </a>
+          <a href="" class="text-muted d-block" style="margin-top: -6px">
+            <small>{{post.uploaded_time}}</small>
+          </a>
+        </div>
+      </div>
+      <!-- Description -->
+      <div>
+        <p>
+          {{post.tags}}
+        </p>
+      </div>
+    </div>
+    <!-- Media -->
+    <div class="bg-image hover-overlay ripple rounded-0" data-mdb-ripple-color="light">
+     
+        {% if post.img %}
+        <img class="rounded w-100 mt-3" src="/media/{{post.img}}" alt="feed">
+        {% else %}
+        <p class = "p-2 quots home_quots">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-left-quote" viewBox="0 0 16 16">
+            <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z"/>
+            </svg>
+            {{post.post|linebreaksbr}}
+        
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-right-quote" viewBox="0 0 16 16">
+            <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353zM7.194 4.766q.13.188.227.401c.428.948.393 2.377-.942 3.706a.446.446 0 0 1-.612.01.405.405 0 0 1-.011-.59c.419-.416.672-.831.809-1.22-.269.165-.588.26-.93.26C4.775 7.333 4 6.587 4 5.667S4.776 4 5.734 4c.271 0 .528.06.756.166l.008.004c.169.07.327.182.469.324q.128.125.227.272M11 7.073c-.269.165-.588.26-.93.26-.958 0-1.735-.746-1.735-1.666S9.112 4 10.069 4c.271 0 .528.06.756.166l.008.004c.17.07.327.182.469.324q.128.125.227.272.131.188.228.401c.428.948.392 2.377-.942 3.706a.446.446 0 0 1-.613.01.405.405 0 0 1-.011-.59c.42-.416.672-.831.81-1.22z"/>
+            </svg>
+        </p>
+        {% endif %}
+
+
+
+    </div>
+    <!-- Media -->
+    <!-- Interactions -->
+    <div class="card-body">
+      <!-- Reactions -->
+      <div class="d-flex justify-content-between mb-3">
+        <div>
+          <a href="">
+            <i class="fas fa-thumbs-up text-primary"></i>
+            <i class="fas fa-heart text-danger"></i>
+            <span>124</span>
+          </a>
+        </div>
+        <div>
+          <a href="" class="text-muted"> 8 comments </a>
+        </div>
+      </div>
+      <!-- Reactions -->
+
+      <!-- Buttons -->
+      <div class="d-flex justify-content-between text-center border-top border-bottom mb-4">
+        <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-lg" data-mdb-ripple-color="dark">
+          <i class="fas fa-thumbs-up me-2"></i>Like
+        </button>
+        <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-lg" data-mdb-ripple-color="dark">
+          <i class="fas fa-comment-alt me-2"></i>Comment
+        </button>
+        
+        
+        <div class="c-share">
+            <input class="c-share__input" type="checkbox" id="checkbox{{post.id}}">
+            <label class="c-share__toggler" for="checkbox{{post.id}}">
+                <span class="c-share__icon"></span>
+            </label>
+
+            <ul class="c-share_options" style="display: flex; padding-top: 30px; justify-content: space-around; font-size: 23px;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/post-is/{{post.id}}" target="_blank">
+            <li><i class="fab fa-facebook-f"></i></li>
+            </a>
+            <a href="https://instagram.com/direct/new/?text=http://127.0.0.1:8000/post-is/{{post.id}}" target="_blank">
+            <li><i class="fab fa-instagram"></i></li>
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://127.0.0.1:8000/post-is/{{post.id}}" target="_blank">
+            <li><i class="fab fa-linkedin"></i></li>
+            </a>
+            <a href="https://slack.com/share?text=Check+this+out:+http://127.0.0.1:8000/post-is/{{post.id}}" target="_blank">
+            <li><i class="fab fa-slack"></i></li>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=http://127.0.0.1:8000/post-is/{{post.id}}&text=Check+this+out!" target="_blank">
+            <li><i class="fab fa-twitter"></i></li>
+            </a>
+            </ul>
+        </div>
+      </div>
+      <!-- Buttons -->
+
+      <!-- Comments -->
+
+      
+      <!-- Comments -->
+    </div>
+    <!-- Interactions -->
+  </div>
+</section>
+<!--Section: Newsfeed-->
+</div>
+
+
+{% endblock body %}

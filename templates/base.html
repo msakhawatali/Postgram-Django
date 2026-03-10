@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %} | Postgram</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
+    {% block css %}{% endblock css %}
+  </head>
+  <body style="min-height: 100vh; display: flex; flex-direction: column;">
+    <header class="p-1 text-bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <nav class="navbar manage_logo">
+                        <div class="container">
+                            <a class="navbar-brand" href="#">
+                                <img src="/static/images/logo/logo.png" alt="Bootstrap" width="70" height="60">
+                            </a>
+                        </div>
+                    </nav>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+                <li><a href="/contact" class="nav-link px-2 text-white">Contact</a></li>
+                <li><a href="/services" class="nav-link px-2 text-white">Services</a></li>
+                <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
+                </ul>
+                <div class="text-end">
+                    {% if request.user.is_authenticated %}
+                        <div class="dropdown text-end">
+                            <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+                                <!-- <img src="/media/{{user.userprofile.profile_pic}}" alt="mdo" width="32" height="32" class="rounded-circle"> -->
+                                {% if user_is.profile_pic %}
+                                <img class="avatar-img" src="/media/{{user_is.profile_pic}}" alt="mdo" width="32" height="32" class="rounded-circle" style="border-radius: 50%; width: 32px; height: 32px;">
+                                {% else %}
+                                <img class="avatar-img" src="/static/images/logo/wingtilldie-avatar-1577909_1920.png" alt="mdo" width="32" height="32" class="rounded-circle" style="border-radius: 50%">
+                                {% endif %}
+                            </a>
+                            <ul class="dropdown-menu text-small">
+                                <li><a class="dropdown-item" href="#">Welcome {{ request.user.username }}</a></li>
+                                <li><a class="dropdown-item" href="/profile/your-profile">Profile</a></li>
+                                <li><a class="dropdown-item" href="/profile/add-post">Add Post</a></li>
+                                <li><a class="dropdown-item" href="/profile/update-profile">Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/auth/logout-url">Sign out</a></li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <div class="text-end">
+                            <a href="/auth/login">
+                                <button type="button" class="btn btn-outline-light me-2">Login</button>
+                            </a>
+                            <a href="/auth/signup">
+                                <button type="button" class="btn btn-warning">Sign-up</button>
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <div style="flex: 1;">
+    {% block body %}
+    {% endblock body %}
+    </div>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+        <footer class="bg-dark-gradient footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="footer-border-bottom pb-6 mb-5">
+                        <div class="row">
+                            <div class="col-lg-4 col-xl-3">
+                                <h4 class="text-white">
+                                    Sign up to Get Latest Updates
+                                </h4>
+                            </div>
+                            <!-- <div class="col-lg-4 col-xl-6">
+                                <form class="d-flex flex-row mb-2 p-1 bg-white input-group">
+                                    <input type="email" class="form-control rounded-0 border-0" placeholder="you@yoursite.com">
+                                    <button class="btn btn-secondary rounded-0 flex-shrink-0" type="submit">Subscribe</button>
+                                </form>
+                            </div> -->
+                            <div class="col-lg-4 col-xl-9">
+                                <div class="text-lg-end text-white">
+                                    <span class="h6">Call Us On</span><br>
+                                    <span class="h3">+92-300-0000000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-3 my-4">
+                            <div class="mb-4">
+                                <img src="static/img/logo-light.svg" title="" alt="">
+                            </div>
+                            <div class="text-white-65 mb-4 text-white">Postgram — Share your moments, connect with people, express yourself.</div>
+                            <div class="nav footer-socila-icon">
+                                <a href="https://facebook.com" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+                                <a href="https://twitter.com" target="_blank">
+        <i class="fab fa-twitter"></i>
+        </a>
+                                <a href="https://instagram.com" target="_blank">
+        <i class="fab fa-instagram"></i>
+        </a>
+                                <a href="https://linkedin.com" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+        </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-2 my-4">
+                            <h5 class="text-white h6 mb-4">Customer</h5>
+                            <ul class="list-unstyled white-link footer-links">
+                                <li>
+                                    <a href="#">Get Corpo</a>
+                                </li>
+                                <li>
+                                    <a href="#">Documentation</a>
+                                </li>
+                                <li>
+                                    <a href="#">Help center</a>
+                                </li>
+                                <li>
+                                    <a href="#">Pricing</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contact us</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-lg-2 my-4">
+                            <h5 class="text-white h6 mb-4">Product</h5>
+                            <ul class="list-unstyled white-link footer-links">
+                                <li>
+                                    <a href="#">Portfolio</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="#">Join our team</a>
+                                </li>
+                                <li>
+                                    <a href="#">Elements</a>
+                                </li>
+                                <li>
+                                    <a href="#">Products</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-lg-2 my-4">
+                            <h5 class="text-white h6 mb-4">Company</h5>
+                            <ul class="list-unstyled white-link footer-links">
+                                <li>
+                                    <a href="#">About</a>
+                                </li>
+                                <li>
+                                    <a href="#">Careers</a>
+                                </li>
+                                <li>
+                                    <a href="#">Legal &amp; Security</a>
+                                </li>
+                                <li>
+                                    <a href="#">Terms of use</a>
+                                </li>
+                                <li>
+                                    <a href="#">We're hiring!</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 my-4">
+                            <h5 class="text-white h6 mb-4">Company</h5>
+                            <div class="white-link">
+                                <div class="d-flex pb-3">
+                                    <div class="avatar avatar-lg rounded">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" title="" alt="">
+                                    </div>
+                                    <div class="col ps-3">
+                                        <small class="text-white-65">29 March 2021</small>
+                                        <h6 class="font-w-500 h6 m-0"><a class="text-white" href="#">Markdown Language Sample Blog Post Styling</a></h6>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="avatar avatar-lg rounded">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" title="" alt="">
+                                    </div>
+                                    <div class="col ps-3">
+                                        <small class="text-white-65">29 March 2021</small>
+                                        <h6 class="font-w-500 h6 m-0"><a class="text-white" href="#">Markdown Language Sample Blog Post Styling</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom footer-border-top light py-3">
+                <div class="container text-center">
+                    <p class="m-0">© 2025 Postgram. All rights reserved.</a></p>
+                </div>
+            </div>
+        </footer> 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+        $('.dropify').dropify();
+    </script>
+  </body>
+</html>

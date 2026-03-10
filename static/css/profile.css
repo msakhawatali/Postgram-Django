@@ -1,0 +1,59 @@
+body {
+    background-color: #e2e8f0; /* Light gray background */
+    color: #fff;
+}
+
+.custom-card {
+    background-color: #444444 !important; /* Dark card color from image */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.main-breadcrumb {
+    margin-bottom: 20px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #888;
+}
+
+.breadcrumb a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.text-secondary {
+    color: #b0b0b0 !important;
+}
+
+.progress {
+    background-color: #555;
+}
+
+.list-group-item i {
+    font-size: 18px;
+}
+
+/* Follow & Message Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.image_post{
+    max-width: 200px;
+    max-height: 163px;
+    min-width: 200px;
+    min-height: 163px;
+}

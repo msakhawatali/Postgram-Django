@@ -1,0 +1,248 @@
+{% extends "base_profile.html" %}
+
+{% block title %}My Profile{% endblock title %}
+
+{% block profile %}
+
+<style>
+    .image_post{
+    max-height: 163px;
+    min-height: 163px;
+}
+
+.manage_title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.public_private{
+    padding: 1% 6%;
+    border: 1px solid;
+    border-radius: 6px;
+    background-color: #FFAC1C;
+    color: #ffffff;
+}
+
+.quots{
+        background-color: #efe0e0;
+    font-size: 15px;
+    font-weight: 600;
+    color: red;
+}
+
+</style>
+
+<div>
+    <section style="background-color: #eee;">
+        <div class="container py-5">
+
+            <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                <div class="card-body text-center">
+                    {% if user_info.profile_pic %}
+                    <img src="/media/{{user_info.profile_pic}}" alt="avatar"
+                    class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
+                    {% else %}
+                    <img src="/static/images/logo/wingtilldie-avatar-1577909_1920.png" alt="avatar"
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                    {% endif %}
+                    <h5 class="my-3">{{request.user}}</h5>
+                    <p class="text-muted mb-1">{{user_info.bio}}</p>
+                    <p class="text-muted mb-4">{{user_info.address}}</p>
+                    <div class="d-flex justify-content-center mb-2">
+                 
+                    </div>
+                </div>
+                </div>
+          
+            </div>
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Full Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{user.first_name}} {{user.last_name}}</p>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{user.email}}</p>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Phone</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{user_info.phone_number}}</p>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Address</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{user_info.address}}</p>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Bio</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">{{user_info.bio}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Joining Date</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{user.date_joined}}</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                
+            </div>
+
+            <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-4 mb-md-0">
+                            <div class="card-body">
+                                <p class="mb-4">My Profile</p>
+
+                                
+                                <div class="row row-cols-1 row-cols-md-4 g-4">
+
+                                    {% for record in user_data %}
+                                    <div class="col" data-bs-toggle="modal" data-bs-target="#exampleModal{{record.id}}">
+                                        <div class="card h-100">
+                                        {% if record.image %}
+                                        <img src="/media/{{record.img}}" class="card-img-top image_post" alt="...">
+                                        {% else %}
+                                            <p class = "p-2 quots">
+
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-left-quote" viewBox="0 0 16 16">
+                                                <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z"/>
+                                                </svg>
+                                                {{record.post|truncatechars:300|linebreaksbr}}
+                                            
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-right-quote" viewBox="0 0 16 16">
+                                                <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353zM7.194 4.766q.13.188.227.401c.428.948.393 2.377-.942 3.706a.446.446 0 0 1-.612.01.405.405 0 0 1-.011-.59c.419-.416.672-.831.809-1.22-.269.165-.588.26-.93.26C4.775 7.333 4 6.587 4 5.667S4.776 4 5.734 4c.271 0 .528.06.756.166l.008.004c.169.07.327.182.469.324q.128.125.227.272M11 7.073c-.269.165-.588.26-.93.26-.958 0-1.735-.746-1.735-1.666S9.112 4 10.069 4c.271 0 .528.06.756.166l.008.004c.17.07.327.182.469.324q.128.125.227.272.131.188.228.401c.428.948.392 2.377-.942 3.706a.446.446 0 0 1-.613.01.405.405 0 0 1-.011-.59c.42-.416.672-.831.81-1.22z"/>
+                                                </svg>
+                                            </p>
+                                        {% endif %}
+                                        <div class="card-body">
+                                            
+                                            <div class="manage_title">
+                                                <h6 class="card-title">{{record.uploaded_time}}</h6>
+                                                <h6 class="card-title public_private">
+                                                    {% if record.is_private %} Private {% else %}Public{% endif %}
+                                                </h6>
+                                            </div>
+
+                                            <p class="card-text">{{record.description|truncatechars:100}}</p>
+                                        </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal{{record.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">My Post</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <div class="card h-100">
+                                                    {% if record.image %}
+                                                    <div style="display: flex; justify-content: center;">
+                                                        <img src="/media/{{record.img}}" class="card-img-center" style="max-width: -webkit-fill-available;">
+                                                    </div>
+                                                    {% else %}
+                                                        <p class = "p-2 quots" style="padding: 3% 11% !important; margin: 1% 21%; font-size: 21px;">
+
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-left-quote" viewBox="0 0 16 16">
+                                                            <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z"/>
+                                                            </svg>
+                                                            {{record.post|linebreaksbr}}
+                                                        
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-right-quote" viewBox="0 0 16 16">
+                                                            <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353zM7.194 4.766q.13.188.227.401c.428.948.393 2.377-.942 3.706a.446.446 0 0 1-.612.01.405.405 0 0 1-.011-.59c.419-.416.672-.831.809-1.22-.269.165-.588.26-.93.26C4.775 7.333 4 6.587 4 5.667S4.776 4 5.734 4c.271 0 .528.06.756.166l.008.004c.169.07.327.182.469.324q.128.125.227.272M11 7.073c-.269.165-.588.26-.93.26-.958 0-1.735-.746-1.735-1.666S9.112 4 10.069 4c.271 0 .528.06.756.166l.008.004c.17.07.327.182.469.324q.128.125.227.272.131.188.228.401c.428.948.392 2.377-.942 3.706a.446.446 0 0 1-.613.01.405.405 0 0 1-.011-.59c.42-.416.672-.831.81-1.22z"/>
+                                                            </svg>
+                                                        </p>
+                                                        {% endif %}
+                                                        <div class="card-body">
+                                                            
+                                                            <div class="manage_title">
+                                                                <h6 class="card-title">{{record.uploaded_time}}</h6>
+                                                                <h6 class="card-title public_private">
+                                                                    {% if record.is_private %} Private {% else %}Public{% endif %}
+                                                                </h6>
+                                                            </div>
+
+                                                            <p class="card-text">{{record.description}}</p>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    <div style="display: flex; justify-content: space-evenly; margin-top: 14px;">
+                                                        <div>
+                                                            <a href="/profile/delete-post/{{record.id}}">
+                                                                <button class="btn btn-danger">Delete Post</button>
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="chnage-to/{{record.id}}">
+                                                                <button class="btn btn-success">Chnage To {% if record.is_private %} Public {% else %}Private{% endif %}</button>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                 
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+{% endblock profile %}

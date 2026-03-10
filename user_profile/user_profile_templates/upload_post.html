@@ -1,0 +1,101 @@
+{% extends "base_profile.html" %}
+{% load static %}
+
+{% block title %}Add Post{% endblock title %}
+
+{% block profile %}
+<link rel="stylesheet" href="/static/css/add_post.css">
+
+<div class="handel_div">
+    <h3 class="manage_header">Upload Your Post</h3>
+
+    <div>
+        <nav>
+            <div class="nav nav-tabs tab_bar" style="border-bottom: none;" id="nav-tab" role="tablist">
+                <button class="nav-link active bar_hedaer btn btn-outline-light" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                    <h3>Add Post</h3>
+                </button>
+                <button class="nav-link bar_hedaer btn btn-outline-light" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                    <h3>Add Quotes</h3>
+                </button>
+            </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" style="margin-top: 20px; margin-bottom: 20px;" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                <div class="card" style="border-radius: 20px;">
+                    <div class="card-body hanel_body">
+                        <h5 class="card-title text-center">Upload a Post</h5>
+                        
+                        <form action="/profile/upload-image-to-db" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label class="form-label">Upload Image</label>
+                                <input name="img" type="file" class="dropify form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Add Tags</label>
+                                <input name="tag" type="text" class="form-control" placeholder="Please enter tags separated with ,">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Visibility</label>
+                                <select class="form-select" name="visibility">
+                                    <option value="public">Public</option>
+                                    <option value="private">Private</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">About Post</label>
+                                <textarea name="desc" class="form-control" rows="3" placeholder="Describe about your post.."></textarea>
+                            </div>
+
+                            <div style="text-align: center;">
+                                <button class="btn btn-primary upload_post" type="submit">Upload Post</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" style="margin-top: 20px; margin-bottom: 20px;" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                <div class="card" style="border-radius: 20px;">
+                    <div class="card-body hanel_body">
+                        <h5 class="card-title text-center">Post a Quote</h5>
+                        
+                        <form action="/profile/upload-post-to-db" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label class="form-label">Write a Quote</label>
+                                <textarea name="post" class="form-control" rows="3" placeholder="Write your idea or quote." required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">About Post</label>
+                                <textarea name="desc" class="form-control" rows="3" placeholder="Describe about your post.."></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Visibility</label>
+                                <select class="form-select" name="visibility">
+                                    <option value="public">Public</option>
+                                    <option value="private">Private</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Add Tags</label>
+                                <input name="tag" type="text" class="form-control" placeholder="Please enter tags separated with ,">
+                            </div>
+
+                            <div style="text-align: center;">
+                                <button class="btn btn-primary upload_post" type="submit">Upload Post</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock profile %}
