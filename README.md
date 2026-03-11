@@ -5,7 +5,7 @@ A full-stack social media web application built with Django — allowing users t
 ---
 
 ## 🖥️ Live Demo
-> Coming soon...
+👉 [https://postgram1.pythonanywhere.com](https://postgram1.pythonanywhere.com)
 
 ---
 
