@@ -89,7 +89,9 @@ Open your browser and go to: `http://127.0.0.1:8000`
 
 ## 📸 Screenshots
 
-> Add screenshots here after deployment
+| Home Page | Profile Page |
+|-----------|-------------|
+| ![Login Page](screenshots/login.png) | ![Signup Page](screenshots/signup.png) |
 
 ---
 
