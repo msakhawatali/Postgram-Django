@@ -92,6 +92,11 @@ Open your browser and go to: `http://127.0.0.1:8000`
 | Home Page | Profile Page |
 |-----------|-------------|
 | ![Login Page](screenshots/login.png) | ![Signup Page](screenshots/signup.png) |
+| ![Login Page](screenshots/home.png) | ![Login Page](screenshots/single_post.png) |
+| ![Login Page](screenshots/profile.png) | ![Login Page](screenshots/profile_update.png) |
+| ![Login Page](screenshots/services.png) | ![Signup Page](screenshots/about.png) |
+| ![Login Page](screenshots/contact.png) | ![Signup Page](screenshots/change_password.png) |
+| ![Login Page](screenshots/post_image.png) | ![Login Page](screenshots/qoutes_post.png) |
 
 ---
 
