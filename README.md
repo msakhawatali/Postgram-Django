@@ -89,13 +89,18 @@ Open your browser and go to: `http://127.0.0.1:8000`
 
 ## 📸 Screenshots
 
-| Home Page | Profile Page |
+| Login Page | Signup Page |
 |-----------|-------------|
 | ![Login Page](screenshots/login.png) | ![Signup Page](screenshots/signup.png) |
-| ![Login Page](screenshots/home.png) | ![Login Page](screenshots/single_post.png) |
+| Home Page | Single Post Page |
+| ![Home Page](screenshots/home.png) | ![Single_post Page](screenshots/single_post.png) |
+| Profile Page | Profile_update Page |
 | ![Login Page](screenshots/profile.png) | ![Login Page](screenshots/profile_update.png) |
+| Services Page | About Page |
 | ![Login Page](screenshots/services.png) | ![Signup Page](screenshots/about.png) |
+| Contect Page | Change_possword Page |
 | ![Login Page](screenshots/contact.png) | ![Signup Page](screenshots/change_password.png) |
+| Post_image Page | Qoutes_post Page |
 | ![Login Page](screenshots/post_image.png) | ![Login Page](screenshots/qoutes_post.png) |
 
 ---
