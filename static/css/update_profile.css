@@ -1,31 +1,59 @@
 
-.card {
-    margin-bottom: 1.5rem;
-    box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
+/* Postgram Update Profile / Settings Styles - Violet & Coral Theme */
+
+.settings-card {
+    background: var(--surface, #FFFFFF);
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: 0 4px 20px rgba(109, 40, 217, 0.04);
+    border: 1px solid var(--border, #E9E5F5);
+    overflow: hidden;
+    margin-bottom: 24px;
 }
-.card {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid #e5e9f2;
-    border-radius: .2rem;
+
+.settings-card .card-header {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border, #E9E5F5);
+    padding: 18px 24px;
 }
-.card-header:first-child {
-    border-radius: calc(.2rem - 1px) calc(.2rem - 1px) 0 0;
+
+.settings-card .card-header .card-title {
+    font-family: var(--font-heading, 'Poppins', sans-serif);
+    font-weight: 700;
+    color: var(--text, #1F2937);
+    font-size: 16px;
 }
-.card-header {
-    border-bottom-width: 1px;
+
+.settings-sidebar .list-group-item {
+    border: none;
+    padding: 14px 20px;
+    font-family: var(--font-heading, 'Poppins', sans-serif);
+    font-weight: 500;
+    color: var(--text-muted, #6B7280);
+    transition: var(--transition);
 }
-.card-header {
-    padding: .75rem 1.25rem;
-    margin-bottom: 0;
-    color: inherit;
-    background-color: #fff;
-    border-bottom: 1px solid #e5e9f2;
+
+.settings-sidebar .list-group-item:hover:not(.active) {
+    background-color: var(--primary-light, #F3E8FF);
+    color: var(--primary, #6D28D9);
 }
+
+.settings-sidebar .list-group-item.active {
+    background-color: var(--primary, #6D28D9);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(109, 40, 217, 0.25);
+}
+
+.form-control:focus {
+    border-color: var(--primary, #6D28D9) !important;
+    box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.12) !important;
+}
+
+.profile-preview-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-light, #F3E8FF);
+    box-shadow: 0 4px 14px rgba(109, 40, 217, 0.2);
+}
+

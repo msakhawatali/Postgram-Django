@@ -7,25 +7,25 @@
 <link rel="stylesheet" href="/static/css/add_post.css">
 
 <div class="handel_div">
-    <h3 class="manage_header">Upload Your Post</h3>
+    <h3 class="manage_header">Upload & Share</h3>
 
     <div>
         <nav>
-            <div class="nav nav-tabs tab_bar" style="border-bottom: none;" id="nav-tab" role="tablist">
-                <button class="nav-link active bar_hedaer btn btn-outline-light" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
-                    <h3>Add Post</h3>
+            <div class="nav nav-tabs tab_bar" id="nav-tab" role="tablist">
+                <button class="nav-link active bar_hedaer" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                    <h3>📷 Image Post</h3>
                 </button>
-                <button class="nav-link bar_hedaer btn btn-outline-light" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
-                    <h3>Add Quotes</h3>
+                <button class="nav-link bar_hedaer" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                    <h3>✍️ Post Quote</h3>
                 </button>
             </div>
         </nav>
 
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" style="margin-top: 20px; margin-bottom: 20px;" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                <div class="card" style="border-radius: 20px;">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                <div class="card border-0">
                     <div class="card-body hanel_body">
-                        <h5 class="card-title text-center">Upload a Post</h5>
+                        <h5 class="card-title text-center font-weight-bold mb-4" style="color: #1F2937;">Upload an Image Post</h5>
                         
                         <form action="/profile/upload-image-to-db" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
@@ -35,7 +35,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Add Tags</label>
-                                <input name="tag" type="text" class="form-control" placeholder="Please enter tags separated with ,">
+                                <input name="tag" type="text" class="form-control" placeholder="e.g. photography, travel, nature">
                             </div>
 
                             <div class="mb-3">
@@ -47,11 +47,11 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">About Post</label>
+                                <label class="form-label">Caption / Description</label>
                                 <textarea name="desc" class="form-control" rows="3" placeholder="Describe about your post.."></textarea>
                             </div>
 
-                            <div style="text-align: center;">
+                            <div class="text-center mt-4">
                                 <button class="btn btn-primary upload_post" type="submit">Upload Post</button>
                             </div>
                         </form>
@@ -59,20 +59,20 @@
                 </div>
             </div>
 
-            <div class="tab-pane fade" style="margin-top: 20px; margin-bottom: 20px;" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                <div class="card" style="border-radius: 20px;">
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                <div class="card border-0">
                     <div class="card-body hanel_body">
-                        <h5 class="card-title text-center">Post a Quote</h5>
+                        <h5 class="card-title text-center font-weight-bold mb-4" style="color: #1F2937;">Post a Quote or Idea</h5>
                         
                         <form action="/profile/upload-post-to-db" method="post">
                             {% csrf_token %}
                             <div class="mb-3">
                                 <label class="form-label">Write a Quote</label>
-                                <textarea name="post" class="form-control" rows="3" placeholder="Write your idea or quote." required></textarea>
+                                <textarea name="post" class="form-control" rows="3" placeholder="Write your thoughts, idea or inspiring quote..." required></textarea>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">About Post</label>
-                                <textarea name="desc" class="form-control" rows="3" placeholder="Describe about your post.."></textarea>
+                                <label class="form-label">Description / Context</label>
+                                <textarea name="desc" class="form-control" rows="2" placeholder="Additional details about your post.."></textarea>
                             </div>
 
                             <div class="mb-3">
@@ -85,11 +85,11 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Add Tags</label>
-                                <input name="tag" type="text" class="form-control" placeholder="Please enter tags separated with ,">
+                                <input name="tag" type="text" class="form-control" placeholder="e.g. motivation, thoughts">
                             </div>
 
-                            <div style="text-align: center;">
-                                <button class="btn btn-primary upload_post" type="submit">Upload Post</button>
+                            <div class="text-center mt-4">
+                                <button class="btn btn-primary upload_post" type="submit">Upload Quote</button>
                             </div>
                         </form>
                     </div>
@@ -98,4 +98,4 @@
         </div>
     </div>
 </div>
-{% endblock profile %}
+{% endblock profile %}

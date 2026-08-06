@@ -1,59 +1,105 @@
-body {
-    background-color: #e2e8f0; /* Light gray background */
-    color: #fff;
+/* Postgram Profile Styles - Violet & Coral Theme */
+
+.profile-card {
+    background: var(--surface, #FFFFFF);
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: 0 4px 20px rgba(109, 40, 217, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--border, #E9E5F5);
+    overflow: hidden;
+    margin-bottom: 24px;
 }
 
-.custom-card {
-    background-color: #444444 !important; /* Dark card color from image */
+.profile-avatar-frame {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-light, #F3E8FF);
+    box-shadow: 0 6px 20px rgba(109, 40, 217, 0.2);
+}
+
+.public_private {
+    padding: 4px 12px;
+    border-radius: 20px;
+    background-color: var(--primary-light, #F3E8FF);
+    color: var(--primary, #6D28D9);
+    font-family: var(--font-heading, 'Poppins', sans-serif);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--border, #E9E5F5);
+    display: inline-block;
+}
+
+.public_private.private {
+    background-color: var(--accent-light, #FFF0F0);
+    color: var(--accent, #FF6B6B);
+    border-color: #FECACA;
+}
+
+.quots {
+    background: linear-gradient(135deg, #F3E8FF 0%, #FAF9FF 100%);
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text, #1F2937);
+    border-radius: var(--radius-md, 12px);
+    padding: 16px !important;
+    border-left: 4px solid var(--primary, #6D28D9);
+    margin: 0;
+}
+
+.quots svg {
+    color: var(--primary, #6D28D9);
+    opacity: 0.8;
+}
+
+.image_post {
+    max-height: 200px;
+    min-height: 200px;
+    object-fit: cover;
+    width: 100%;
+    border-top-left-radius: var(--radius-lg, 16px);
+    border-top-right-radius: var(--radius-lg, 16px);
+}
+
+.manage_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-card-item {
+    background: var(--surface, #FFFFFF);
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: 0 4px 15px rgba(109, 40, 217, 0.04);
+    border: 1px solid var(--border, #E9E5F5);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.post-card-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(109, 40, 217, 0.12);
+    border-color: rgba(109, 40, 217, 0.2);
+}
+
+.modal-content {
+    border-radius: 20px;
     border: none;
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-lg);
 }
 
-.main-breadcrumb {
-    margin-bottom: 20px;
+.modal-header {
+    border-bottom: 1px solid var(--border, #E9E5F5);
+    padding: 20px 24px;
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
-    color: #888;
+.modal-header .modal-title {
+    font-family: var(--font-heading, 'Poppins', sans-serif);
+    font-weight: 700;
+    color: var(--primary, #6D28D9);
 }
-
-.breadcrumb a {
-    color: #0d6efd;
-    text-decoration: none;
-}
-
-.text-secondary {
-    color: #b0b0b0 !important;
-}
-
-.progress {
-    background-color: #555;
-}
-
-.list-group-item i {
-    font-size: 18px;
-}
-
-/* Follow & Message Buttons */
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-}
-
-.btn-outline-primary {
-    color: #007bff;
-    border-color: #007bff;
-}
-
-.btn-outline-primary:hover {
-    background-color: #007bff;
-    color: white;
-}
-
-.image_post{
-    max-width: 200px;
-    max-height: 163px;
-    min-width: 200px;
-    min-height: 163px;
-}
+
