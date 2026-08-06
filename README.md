@@ -28,7 +28,7 @@ A full-stack social media web application built with Django — allowing users t
 |-------|-----------|
 | Backend | Python, Django |
 | Frontend | HTML, CSS, Bootstrap 5 |
-| Database | SQLite |
+| Database | PostgreSQL |
 | Auth | Django Auth (Session based) |
 
 ---
